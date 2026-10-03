@@ -1,5 +1,6 @@
 ﻿using WebMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using WebMVC.Data.Configuration;
 
 namespace WebMVC.Data
 {
@@ -14,6 +15,9 @@ namespace WebMVC.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new BarbersConfiguration());
+            modelBuilder.ApplyConfiguration(new BarberShopConfiguration());
+
             base.OnModelCreating(modelBuilder);
             // Additional configuration can be added here if needed.
         }

@@ -4,23 +4,22 @@ using WebMVC.Data;
 
 namespace WebMVC
 {
+    using Microsoft.EntityFrameworkCore;
+    using Data;
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+          WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+            string connectionString = builder.Configuration
+                .GetConnectionString("SqlServerDev") ??
+                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<BarberShopsDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<BarberShopsDbContext>();
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddDbContext<BarberShopsDbContext>(opt => opt.UseSqlServer(connectionString));
+
+            WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

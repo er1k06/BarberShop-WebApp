@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static WebMVC.Common.EntityValidation.Barber;
 
 namespace WebMVC.Data.Models
@@ -7,6 +8,9 @@ namespace WebMVC.Data.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public int Experience{ get; set; }
 
         [Required]
         [StringLength(BarberFirstNameMaxLength)]
@@ -18,5 +22,10 @@ namespace WebMVC.Data.Models
 
         [Required]
         public int Age { get; set; }
+
+        [ForeignKey(nameof(Shop))]
+        public int ShopId { get; set; }
+        public Shops Shop { get; set; } = null!;
+
     }
 }
