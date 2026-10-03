@@ -11,6 +11,12 @@ namespace WebMVC.Data
         }
         public virtual DbSet<Shops> Shops { get; set; } = null!;
         public virtual DbSet<Barber> Barbers { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // Additional configuration can be added here if needed.
+        }
         //Databases should be added here for the DbContext to be able to access them.
     }
   

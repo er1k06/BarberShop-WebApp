@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebMVC.Data;
+using WebMVC.Data.Models;
 
 namespace WebMVC.Controllers
 {
@@ -15,6 +16,7 @@ namespace WebMVC.Controllers
         {
             IEnumerable<Shops> allShops = dbContext.Shops
                 .ToArray();
+            return View(allShops);
         }
     }
 }

@@ -1,16 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static WebMVC.Common.EntityValidation.Shop;
 
 namespace WebMVC.Data.Models
 {
     public class Shops
     {
-        [Required]
-        [StringLength(100)]
-        string location { get; set; } = null!;
+        [Key]
+        public int Id { get; set; }
+
 
         [Required]
-        [StringLength(100)]
-        string name { get; set; } = null!;
+        [StringLength(ShopLocationMaxLength)]
+        public string Location { get; set; } = null!;
+
+        [Required]
+        [StringLength(ShopNameMaxLength)]
+        public string Name { get; set; } = null!;
 
         public virtual ICollection<Barber> Barbers { get; set; } = new HashSet<Barber>();
 

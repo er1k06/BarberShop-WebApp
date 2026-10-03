@@ -1,20 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static WebMVC.Common.EntityValidation.Barber;
 
 namespace WebMVC.Data.Models
 {
     public class Barber
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        string firstName { get; set; } = null! ;
-        string lastName { get; set; } = null! ;
+        [StringLength(BarberFirstNameMaxLength)]
+        public string FirstName { get; set; } = null!;
 
         [Required]
-        [Range(18, 65, ErrorMessage = "Age must be between 18 and 65.")]
-        int age { get; set; }
-        
+        [StringLength(BarberLastNameMaxLength)]
+        public string LastName { get; set; } = null!;
 
+        [Required]
+        public int Age { get; set; }
     }
 }
