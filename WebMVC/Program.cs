@@ -16,6 +16,8 @@ namespace WebMVC
                 throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             builder.Services.AddControllersWithViews();
+            //Add services to the container.
+            builder.Services.AddRazorPages();
 
             builder.Services.AddDbContext<BarberShopsDbContext>(opt => opt.UseSqlServer(connectionString));
 
