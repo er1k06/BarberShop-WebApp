@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebMVC.Data;
 
@@ -10,9 +11,11 @@ using WebMVC.Data;
 namespace WebMVC.Data.Migrations
 {
     [DbContext(typeof(BarberShopsDbContext))]
-    partial class BarberShopsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261008102245_AddBarberImg")]
+    partial class AddBarberImg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

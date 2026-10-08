@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebMVC.Data;
 
@@ -10,9 +11,11 @@ using WebMVC.Data;
 namespace WebMVC.Data.Migrations
 {
     [DbContext(typeof(BarberShopsDbContext))]
-    partial class BarberShopsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261008094648_AgeOfBarberAdd")]
+    partial class AgeOfBarberAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +67,6 @@ namespace WebMVC.Data.Migrations
                             Age = 25,
                             Experience = 5,
                             FirstName = "John",
-                            ImageUrl = "/images/barbers/John-Doe.png",
                             LastName = "Doe",
                             ShopId = 1
                         },
@@ -74,7 +76,6 @@ namespace WebMVC.Data.Migrations
                             Age = 25,
                             Experience = 3,
                             FirstName = "Jane",
-                            ImageUrl = "/images/barbers/Jane-Smith.png",
                             LastName = "Smith",
                             ShopId = 8
                         },
@@ -84,7 +85,6 @@ namespace WebMVC.Data.Migrations
                             Age = 29,
                             Experience = 7,
                             FirstName = "Mike",
-                            ImageUrl = "/images/barbers/Mike-Johnson.png",
                             LastName = "Johnson",
                             ShopId = 3
                         },
@@ -94,7 +94,6 @@ namespace WebMVC.Data.Migrations
                             Age = 28,
                             Experience = 4,
                             FirstName = "Emily",
-                            ImageUrl = "/images/barbers/Emily-Davis.png",
                             LastName = "Davis",
                             ShopId = 4
                         },
@@ -104,7 +103,6 @@ namespace WebMVC.Data.Migrations
                             Age = 34,
                             Experience = 6,
                             FirstName = "David",
-                            ImageUrl = "/images/barbers/David-Wilson.png",
                             LastName = "Wilson",
                             ShopId = 5
                         },
@@ -114,7 +112,6 @@ namespace WebMVC.Data.Migrations
                             Age = 22,
                             Experience = 5,
                             FirstName = "Stoyan",
-                            ImageUrl = "/images/barbers/Stoyan-Stanislavov.png",
                             LastName = "Stanislavov",
                             ShopId = 1
                         },
@@ -124,7 +121,6 @@ namespace WebMVC.Data.Migrations
                             Age = 18,
                             Experience = 3,
                             FirstName = "Anna",
-                            ImageUrl = "/images/barbers/Anna-Boneva.png",
                             LastName = "Boneva",
                             ShopId = 2
                         },
@@ -134,7 +130,6 @@ namespace WebMVC.Data.Migrations
                             Age = 32,
                             Experience = 7,
                             FirstName = "Ivan",
-                            ImageUrl = "/images/barbers/Ivan-Petrov.png",
                             LastName = "Petrov",
                             ShopId = 3
                         },
@@ -144,7 +139,6 @@ namespace WebMVC.Data.Migrations
                             Age = 21,
                             Experience = 4,
                             FirstName = "Lyubomir",
-                            ImageUrl = "/images/barbers/Lyubomir-Savov.png",
                             LastName = "Savov",
                             ShopId = 4
                         },
@@ -154,7 +148,6 @@ namespace WebMVC.Data.Migrations
                             Age = 30,
                             Experience = 3,
                             FirstName = "Denis",
-                            ImageUrl = "/images/barbers/Demis-Stoilov.png",
                             LastName = "Stoilov",
                             ShopId = 7
                         });

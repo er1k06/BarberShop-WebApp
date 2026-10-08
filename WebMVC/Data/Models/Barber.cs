@@ -26,6 +26,7 @@ namespace WebMVC.Data.Models
         [ForeignKey(nameof(Shop))]
         public int ShopId { get; set; }
         public Shops Shop { get; set; } = null!;
+        public string? ImageUrl { get; set; }
 
     }
 }
