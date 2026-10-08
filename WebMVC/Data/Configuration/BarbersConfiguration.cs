@@ -105,7 +105,7 @@
                  Age=30,
                 Experience=3,
                 ShopId=7,
-                ImageUrl="/images/barbers/Demis-Stoilov.png"
+                ImageUrl="/images/barbers/Denis-Stoilov.png"
             }
         };
         public void Configure(EntityTypeBuilder<Barber> builder)

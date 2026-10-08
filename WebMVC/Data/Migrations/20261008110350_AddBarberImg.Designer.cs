@@ -11,7 +11,7 @@ using WebMVC.Data;
 namespace WebMVC.Data.Migrations
 {
     [DbContext(typeof(BarberShopsDbContext))]
-    [Migration("20261008102245_AddBarberImg")]
+    [Migration("20261008110350_AddBarberImg")]
     partial class AddBarberImg
     {
         /// <inheritdoc />
@@ -157,7 +157,7 @@ namespace WebMVC.Data.Migrations
                             Age = 30,
                             Experience = 3,
                             FirstName = "Denis",
-                            ImageUrl = "/images/barbers/Demis-Stoilov.png",
+                            ImageUrl = "/images/barbers/Denis-Stoilov.png",
                             LastName = "Stoilov",
                             ShopId = 7
                         });
