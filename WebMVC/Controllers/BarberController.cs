@@ -54,8 +54,7 @@ namespace WebMVC.Controllers
             }
             return View(barber);
         }
-
-        //[HttpPost]
-        //create appointment
+       
+       
     }
 }
