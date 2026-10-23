@@ -6,6 +6,7 @@ namespace WebMVC.Data.Models
 {
     public class Barber
     {
+        /* Barber model start */
         [Key]
         public int Id { get; set; }
 
@@ -27,6 +28,6 @@ namespace WebMVC.Data.Models
         public int ShopId { get; set; }
         public Shops Shop { get; set; } = null!;
         public string? ImageUrl { get; set; }
-
+        /* Barber model end */
     }
 }

@@ -5,6 +5,7 @@ namespace WebMVC.Data.Models
 {
     public class Shops
     {
+        /* Shops model start */
         [Key]
         public int Id { get; set; }
 
@@ -18,6 +19,6 @@ namespace WebMVC.Data.Models
         public string Name { get; set; } = null!;
 
         public virtual ICollection<Barber> Barbers { get; set; } = new HashSet<Barber>();
-
+        /* Shops model end */
     }
 }

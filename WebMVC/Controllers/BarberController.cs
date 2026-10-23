@@ -8,7 +8,7 @@ namespace WebMVC.Controllers
 {
     public class BarberController : Controller
     {
-            private readonly BarberShopsDbContext _context;
+        private readonly BarberShopsDbContext _context;
 
         public BarberController(BarberShopsDbContext context)
         {
@@ -42,5 +42,20 @@ namespace WebMVC.Controllers
             return View(barbers);
 
         }
+        [HttpGet]
+        public async Task<IActionResult> Appointments(int id)
+        {
+            var barber = await _context.Barbers
+                .Include(b => b.Shop)
+                .FirstOrDefaultAsync(b => b.Id == id);
+            if (barber == null)
+            {
+                return NotFound();
+            }
+            return View(barber);
+        }
+
+        //[HttpPost]
+        //create appointment
     }
 }

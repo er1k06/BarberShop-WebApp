@@ -26,5 +26,6 @@
             public const int ShopNameMaxLength = 100;
             /* Shop End */
         }
+       
     }
 }

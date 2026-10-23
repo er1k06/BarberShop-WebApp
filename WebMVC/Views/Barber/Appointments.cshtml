@@ -1,0 +1,111 @@
+﻿
+@{  
+    ViewData["Title"] = "Appointment";
+}
+
+@*Button style*@
+<style>
+    .appointment-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 350px;
+        margin: 30px auto;
+    }
+
+        .appointment-form input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .appointment-form button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+            cursor: pointer;
+        }
+    .homeandbarber-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+        .btn-red{
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+.btn-red{
+        background-color: #9b0000;
+        border: 2px solid #9b0000;
+        color: white;
+        padding: 13px 30px;
+        font-weight: 600;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 5px;
+        transition: 0.3s;
+    }
+    .btn-red:hover{
+            background-color: #c00000;
+            border-color: #c00000;
+            color: white;
+            transform: translateY(-2px);
+    }
+    </style>
+
+<div class="container appointments-page">
+
+    <div class="appointments-header">
+
+        <h1>Appointment</h1>
+
+        <p>
+            Make your appointment and experience the art of grooming at its finest.
+        </p>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+        </div>
+    </div>
+    <div class="appointment-form">
+        <label for="appointmentDate">
+            Choose date and time:
+        </label>
+
+        <input type="datetime-local"
+               id="appointmentDate"
+               name="AppointmentDate"
+               required />
+    </div>
+    <a asp-controller="Barber"
+       asp-action="Create"
+       class="btn-red">
+        Create Appointment
+    </a>
+    
+
+@*Barbers button*@
+<div class="homeandbarber-button">
+    <a asp-controller="Barber"
+       asp-action="Index"
+       class="btn-red">
+        Back to Barbers
+    </a>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn-red">
+        Back to Home
+    </a>
+</div>

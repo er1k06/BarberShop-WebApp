@@ -185,6 +185,12 @@
                                 @barber.Shop?.Name
                             </span>
                         </div>
+                        <a asp-controller="Barber"
+                           asp-action="appointments"
+                           asp-route-id="@barber.Id"
+                           class="btn btn-primary">
+                            Запази час
+                        </a>
 
                     </div>
 
