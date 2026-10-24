@@ -54,7 +54,26 @@ namespace WebMVC.Controllers
             }
             return View(barber);
         }
-       
-       
+        /*[HttpPost]
+        public async Task<IActionResult> Appointments(int id, Appointments appointment)
+         {
+             var barber = await _context.Barbers
+                 .Include(b => b.Shop)
+                 .FirstOrDefaultAsync(b => b.Id == id);
+             if (barber == null)
+             {
+                 return NotFound();
+             }
+             if (!ModelState.IsValid)
+             {
+                 return View(barber);
+             }
+             _context.Appointments.Add(appointment);
+             await _context.SaveChangesAsync();
+             return RedirectToAction("Index", "Barber");
+         }
+        !!!!!POSSIBLE FUTURE IMPLEMENTATION OF APPOINTMENTS POST METHOD, CURRENTLY COMMENTED OUT!!!!!
+        */
+
     }
 }
