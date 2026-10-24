@@ -18,5 +18,18 @@ namespace WebMVC.Controllers
                 .ToArray();
             return View(allShops);
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var shop = dbContext.Shops
+                .FirstOrDefault(s => s.Id == id);
+            if (shop == null)
+            {
+                return NotFound();
+            }
+            return View(shop);
+        }
     }
+    
 }

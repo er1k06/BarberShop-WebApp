@@ -1,6 +1,66 @@
-﻿@{
+﻿@model IEnumerable<WebMVC.Data.Models.Shops>
+@{
     ViewData["Title"] = "BarberShops";
 
 }
+<style>
+     .btn-info
+    {
+        background-color: #d4af37;
+        color: black;
+        padding: 8px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        border: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+    .btn-info:hover {
+        background-color: #f0cf60;
+        color: black;
+    }
+    th {
+        color: #d4af37; 
+    }
+
+    td {
+        color: #cccccc; 
+    }
+
+    .btn-info {
+        color: black;
+    }
+</style>
 
 
+@*Table start*@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Barber Shop</th>
+            <th scope="col">Location</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shop in Model)
+        {
+            <tr>
+                <th scope="row">@shop.Id</th>
+                <td>@shop.Name</td>
+                <td>@shop.Location</td>
+                <td>
+                    <a asp-controller="Shops"
+                       asp-action="Details"
+                       asp-route-id="@shop.Id"
+                       class="btn-info">
+                        Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*Table end*@

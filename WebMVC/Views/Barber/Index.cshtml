@@ -7,7 +7,7 @@
     int totalPages = ViewBag.TotalPages;
 
 }
-
+@*CSS of page start*@
 <style>
     .barbers-page {
         padding: 40px 0 70px;
@@ -129,7 +129,9 @@
             transform: translateY(-2px);
     }
 </style>
+@*CSS of page end*@
 
+@*Barbers' cards start*@
 <div class="container barbers-page">
 
     <div class="barbers-header">
@@ -200,8 +202,9 @@
         }
 
     </div>
-
-
+    @*Barbers' cards end*@
+    
+    
     @if (totalPages > 1)
     {
         <div class="pagination-container">
@@ -228,7 +231,7 @@
 
         </div>
     }
-
+    @*Home Button*@
     <div class="home-button">
         <a asp-controller="Home"
            asp-action="Index"

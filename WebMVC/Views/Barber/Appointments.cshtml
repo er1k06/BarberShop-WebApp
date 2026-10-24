@@ -3,7 +3,7 @@
     ViewData["Title"] = "Appointment";
 }
 
-@*Button style*@
+@*CSS of the page start*@
 <style>
     .appointment-form {
         display: flex;
@@ -109,7 +109,10 @@
             background: #444;
         }
     </style>
+@*CSS of the page end*@
 
+
+@*Appointment form start*@
         <div class="appointment-container">
             <h2>Create an Appointment</h2>
 
@@ -157,9 +160,10 @@
                 </button>
             </form>
         </div>
+@*Appointment form end*@
     
 
-@*Barbers button*@
+@*Barbers and Home buttons start*@
 <div class="homeandbarber-button">
     <a asp-controller="Barber"
        asp-action="Index"
@@ -173,3 +177,4 @@
         Back to Home
     </a>
 </div>
+@*Barbers and Home buttons end*@
