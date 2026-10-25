@@ -1,55 +1,10 @@
 ﻿@model WebMVC.Data.Models.Shops
+
+
 @{
     var barbers =
         ViewBag.Barbers as IEnumerable<WebMVC.Data.Models.Barber>;
 }
-
-
-@*CSS of page start*@
-<style>
-    .barber-card {
-        background-color: #1c1c1c;
-        border: 1px solid #2d2d2d;
-        border-radius: 12px;
-        overflow: hidden;
-        height: 100%;
-        transition: 0.3s;
-    }
-
-        .barber-card:hover {
-            transform: translateY(-7px);
-            border-color: #b00000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-        }
-
-    .barber-image {
-        width: 100%;
-        height: 320px;
-        object-fit: cover;
-        display: block;
-    }
-
-    .barber-info {
-        padding: 25px;
-    }
-
-    .barber-name {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 15px;
-    }
-
-    .barber-detail {
-        color: #aaaaaa;
-        margin-bottom: 8px;
-    }
-
-        .barber-detail strong {
-            color: #ffffff;
-        }
-</style>
-@*CSS of page end*@
 
 
 @if (barbers != null && barbers.Any())
@@ -74,7 +29,7 @@
                              class="barber-image" />
                     }
 
-
+                    @*Barber's card*@
                     <div class="barber-info">
 
                         <h2 class="barber-name">
@@ -95,10 +50,12 @@
                                 @barber.Shop?.Name
                             </span>
                         </div>
+
+                        @*Appointments button*@
                         <a asp-controller="Barber"
                            asp-action="appointments"
                            asp-route-id="@barber.Id"
-                           class="btn btn-primary">
+                           class="btn-red">
                             Create Appointment
                         </a>
 
@@ -112,5 +69,5 @@
 }
 else
 {
-    <p>There are no barbers assigned to this shop.</p>
+    <p>There are no barbers assigned to this shop.</p> /*This error shows if the Barber Shop have no active barbers working in it*/
 }
