@@ -24,9 +24,9 @@ namespace WebMVC.Data.Models
         [Required]
         public int Age { get; set; }
 
-        [ForeignKey(nameof(Appointments))]
+        /*[ForeignKey(nameof(Appointments))]
         public int AppointmentId { get; set; }
-        public Appointments Appointments { get; set; } = null!;
+        public Appointments Appointments { get; set; } = null!;*/
 
         [ForeignKey(nameof(Shop))]
         public int ShopId { get; set; }

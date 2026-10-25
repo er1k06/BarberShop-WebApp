@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebMVC.Data;
 using WebMVC.Data.Models;
 
@@ -20,14 +21,22 @@ namespace WebMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var shop = dbContext.Shops
-                .FirstOrDefault(s => s.Id == id);
+            var shop = await dbContext.Shops
+                .FirstOrDefaultAsync(s => s.Id == id);
+
             if (shop == null)
             {
                 return NotFound();
             }
+
+            var barbers = await dbContext.Barbers
+                .Where(b => b.ShopId == id)
+                .ToListAsync();
+
+            ViewBag.Barbers = barbers;
+
             return View(shop);
         }
     }
