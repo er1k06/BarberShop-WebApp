@@ -1,5 +1,5 @@
 # 🚀 BarberShop-WebApp
->A simple project about Barber shops targeting covering main functions in MVC. The project uses mostly .NET,SQL,HTML 
+>A simple project about Barber shops covering main functions in MVC. The project uses mostly .NET,SQL,HTML 
 
 ![.NET Version](https://img.shields.io/badge/.NET-8.0-purple)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-8.0-blue)
