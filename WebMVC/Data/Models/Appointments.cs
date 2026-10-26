@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebMVC.Data.Models
 {
     public class Appointments
     {
-        /* Appointment requirements start */
+        /* Appointment model start */
         [Key]
          public int Id { get; set; }
 
@@ -22,7 +23,13 @@ namespace WebMVC.Data.Models
 
         [Required(ErrorMessage = "Enter Date and Time!")]
         public DateTime? AppointmentDate { get; set; }
-        /* Appointment requirements end */
+
+        [Required]
+        public int BarberId { get; set; }
+
+        [ForeignKey(nameof(BarberId))]
+        public Barber Barber { get; set; } = null!;
+        /* Appointment model end */
 
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using static WebMVC.Common.EntityValidation.Barber;
 
+
 namespace WebMVC.Data.Models
 {
     public class Barber
@@ -23,10 +24,8 @@ namespace WebMVC.Data.Models
 
         [Required]
         public int Age { get; set; }
-
-        /*[ForeignKey(nameof(Appointments))]
-        public int AppointmentId { get; set; }
-        public Appointments Appointments { get; set; } = null!;*/
+        public ICollection<Appointments> Appointments { get; set; }
+            = new List<Appointments>();
 
         [ForeignKey(nameof(Shop))]
         public int ShopId { get; set; }
