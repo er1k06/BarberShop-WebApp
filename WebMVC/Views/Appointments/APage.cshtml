@@ -1,0 +1,140 @@
+﻿@model IEnumerable<WebMVC.Data.Models.Appointments>
+
+@{
+    int number = (ViewBag.CurrentPage - 1) * 10 + 1;
+}
+
+<style>
+    .pagination {
+        margin-top: 25px;
+        gap: 5px;
+    }
+
+        .pagination .page-link {
+            background-color: #212529;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 8px 14px;
+            transition: 0.2s;
+        }
+
+            .pagination .page-link:hover {
+                background-color: #dc3545;
+                color: white;
+                border-color: #dc3545;
+            }
+
+        .pagination .page-item.active .page-link {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #343a40;
+            color: #888;
+            border-color: #444;
+        }
+</style>
+
+
+<h1>All Appointments</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Appointment ID</th>
+            <th>Client</th>
+            <th>Phone</th>
+            <th>Barber</th>
+            <th>Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+
+            <tr>
+                <td>@number</td>
+                <td>
+                    @appointment.FirstName @appointment.LastName
+                </td>
+                <td>@appointment.PhoneNumber</td>
+                <td>
+                    @appointment.Barber.FirstName
+                    @appointment.Barber.LastName
+                </td>
+                <td>
+                    @appointment.AppointmentDate.GetValueOrDefault().ToString("dd.MM.yy - HH:mm")
+                </td>
+                <td>
+                    <button type="button"
+                            class="btn btn-danger"
+                            onclick="deleteAppointment(@appointment.Id, this)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            number++;
+        }
+    </tbody>
+</table>
+@if (ViewBag.TotalPages > 1)
+{
+    <nav aria-label="listed appointments">
+        <ul class="pagination justify-content-center">
+
+            <li class="page-item @(ViewBag.CurrentPage <= 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-controller="Appointments"
+                   asp-action="APage"
+                   asp-route-page="@(ViewBag.CurrentPage - 1)">
+                    Previous
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link"
+                       asp-controller="Appointments"
+                       asp-action="APage"
+                       asp-route-page="@i">
+                        @i
+                    </a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.CurrentPage >= ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-controller="Appointments"
+                   asp-action="APage"
+                   asp-route-page="@(ViewBag.CurrentPage + 1)">
+                    Next
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+}
+<script>
+    async function deleteAppointment(id, button) {
+        if (!confirm("Сигурен ли си, че искаш да изтриеш този час?")) {
+            return;
+        }
+
+        const response = await fetch(
+            `/Appointments/Delete/${id}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        if (response.ok) {
+            location.reload();
+        } else {
+            alert("Възникна грешка при изтриването.");
+        }
+    }
+</script>

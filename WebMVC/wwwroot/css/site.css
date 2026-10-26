@@ -86,3 +86,13 @@ body {
         color: #ffffff;
     }
 /*Barber cards css end*/
+
+/*Table colors start*/
+th {
+    color: #d4af37;
+}
+
+td {
+    color: #cccccc;
+}
+/*Table colors end*/

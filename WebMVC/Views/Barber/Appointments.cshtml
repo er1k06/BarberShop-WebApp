@@ -1,4 +1,4 @@
-﻿
+﻿@model WebMVC.Data.Models.Barber
 @{  
     ViewData["Title"] = "Appointment";
 }
@@ -91,6 +91,39 @@
         .submit-btn:hover {
             background: #444;
         }
+
+    .appointment-container {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 25px;
+        background-color: #222;
+        color: white;
+        border-radius: 10px;
+    }
+
+        .appointment-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        .appointment-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #d62828;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .appointment-container button:hover {
+                background-color: #a91e1e;
+            }
+
     </style>
 @*CSS of the page end*@
 
@@ -98,50 +131,29 @@
 @*Appointment form start*@
         <div class="appointment-container">
             <h2>Create an Appointment</h2>
+<form asp-controller="Barber"
+      asp-action="Appointment"
+      asp-route-id="@Model.Id"
+      method="post">
 
-            <form asp-controller="Barber"
-                  asp-action="Create"
-                  method="post">
+    @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    <label for="AppointmentDate">Date And Time</label>
-                    <input type="datetime-local"
-                           id="AppointmentDate"
-                           name="AppointmentDate"
-                           required />
-                </div>
+    <label>First Name</label>
+    <input type="text" name="FirstName" required />
 
-                <div class="form-group">
-                    <label for="FirstName">First Name</label>
-                    <input type="text"
-                           id="FirstName"
-                           name="FirstName"
-                           placeholder="Enter First Name"
-                           required />
-                </div>
+    <label>Last Name</label>
+    <input type="text" name="LastName" required />
 
-                <div class="form-group">
-                    <label for="LastName">Last Name</label>
-                    <input type="text"
-                           id="LastName"
-                           name="LastName"
-                           placeholder="Enter Last Name"
-                           required />
-                </div>
+    <label>Phone Number</label>
+    <input type="tel" name="PhoneNumber" required />
 
-                <div class="form-group">
-                    <label for="PhoneNumber">Телефонен номер</label>
-                    <input type="tel"
-                           id="PhoneNumber"
-                           name="PhoneNumber"
-                           placeholder="+359..."
-                           required/>
-                </div>
+    <label>Appointment Date</label>
+    <input type="datetime-local"
+           name="AppointmentDate"
+           required />
 
-                <button type="submit" class="submit-btn">
-                Create an Appointment
-                </button>
-            </form>
+    <button type="submit">Book Appointment</button>
+</form>
         </div>
 @*Appointment form end*@
     

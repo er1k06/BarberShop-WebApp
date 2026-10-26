@@ -12,6 +12,7 @@ namespace WebMVC.Data
         }
         public virtual DbSet<Shops> Shops { get; set; } = null!;
         public virtual DbSet<Barber> Barbers { get; set; } = null!;
+        public virtual DbSet<Appointments> Appointments { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
